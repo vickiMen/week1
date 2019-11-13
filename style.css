@@ -1,0 +1,53 @@
+#parent {
+    display: flex;
+    height: 300px; Or whatever
+    width: 300px;
+    background-color: deepskyblue;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+}
+
+.child {
+    width: 100px;  /* Or whatever */
+    height: 100px; /* Or whatever */
+    margin: auto;  /*Magic!*/
+}
+
+#child1 {
+    /* order: 1; */
+    background-color: coral;
+}
+
+#child2 {
+    /* order: 0; */
+    background-color: brown;
+}
+
+#child3 {
+    background-color: palevioletred;
+}
+
+#child4 {
+    background-color: darkgoldenrod;
+}
+
+#child5 {
+    background-color: darksalmon;
+}
+
+
+@media all and (max-width: 800px) {
+    #parent {
+      /* When on medium sized screens, we center it by evenly distributing empty space around items */
+      background-color: darkseagreen;
+    }
+  }
+  
+  /* Small screens */
+  @media all and (max-width: 500px) {
+    #parent {
+      /* On small screens, we are no longer using row direction but column */
+      background-color: deeppink;
+      flex-direction: column;
+    }
+  }

@@ -1,0 +1,25 @@
+/* present */
+
+#parent {
+    height: 300px;
+    width: 300px;
+    background-color: blue;
+    position: relative;
+}
+
+.child {
+    background-color: red;
+    position: absolute;
+}
+
+#child1 {
+    height: 300px;
+    width: 15px;
+    left: 50px;
+}
+
+#child2 {
+    height: 15px;
+    width: 300px;
+    top: 50px;
+}

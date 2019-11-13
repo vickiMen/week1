@@ -1,0 +1,54 @@
+/* chocolatebar */
+
+#parent {
+    width: 413px;
+    height: 220px;
+    background-color: black;
+    padding: 2px;
+    position: relative;
+}
+
+.topbar {
+    height: 100px;
+    width: 100px;
+    background-color: #66320E;
+    border: solid black 1px;
+    position: absolute;
+    top: 2px;
+    margin: 2px;
+}
+
+.bottombar {
+    height: 100px;
+    width: 100px;
+    background-color: #66320E;
+    border: solid black 1px;
+    position: absolute;
+    bottom: 2px;
+    margin: 2px;
+}
+
+#child1, #child5 {
+    left: 2px;
+}
+
+#child2, #child6 {
+    left: 104px;
+}
+
+#child3, #child7 {
+    left: 206px;
+}
+
+#child4 {
+    left: 308px;
+}
+
+#child8 {
+    width: 406.5px;
+    height: 5px;
+    background-color: darkred;
+    position: absolute;
+    top: 110px;
+    left: 5px;
+}
