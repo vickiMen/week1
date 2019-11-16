@@ -1,4 +1,3 @@
-// const containerWidth = document.getElementById('container').style.width
 const containerWidth = document.getElementById('playing-field').offsetWidth
 const containerHeight = document.getElementById('playing-field').offsetHeight
 
@@ -10,94 +9,107 @@ const ballWidth = document.getElementById('block').offsetWidth
 const getContainerPadding = window.getComputedStyle(document.getElementById("playing-field"), null)
 const containerPadding = parseInt(getContainerPadding.getPropertyValue("padding"))
 
-const finalWidth = containerWidth - (2*containerBorder) - (2*containerPadding) - (ballWidth/2) - 15
-const finalHeight = containerHeight - (2*containerBorder) - (2*containerPadding) - (ballWidth/2) - 15
+const finalWidth = containerWidth - (2*containerBorder) - (2*containerPadding) - (ballWidth/2) - 10
+const finalHeight = containerHeight - (2*containerBorder) - (2*containerPadding) - (ballWidth/2) - 10
 
 
 const ball = document.getElementById('block')
-const up = document.getElementById('up')
-const down = document.getElementById('down')
-const left = document.getElementById('left')
-const right = document.getElementById('right')
 
 document.getElementById("playing-field").style.position = 'relative' 
 ball.style.position = 'absolute'
 
-ball.style.top = 0
-ball.style.bottom = 0
-ball.style.left = 0
-ball.style.right = 0
+ball.style.top = '0px'
+ball.style.bottom = '0px'
+ball.style.left = '0px'
+ball.style.right = '0px'
+
+let left
+let top2
+let right
+let bottom
 
 
-// const containerHeight = document.getElementById('container').style.height
-// const containerWidth2 = document.getElementById('playing-field').style.width
-// console.log('print1:', containerWidth2)
-// const parsedWidth2 = parseInt(containerWidth2)
-
-let rightValue
-let leftValue
-let upValue
-let downValue
-
-const moveRight = function(){
-    leftValue = parseInt(ball.style.left)
-    leftValue += 15
-    rightValue = finalWidth - leftValue
-    ball.style.left = leftValue + 'px'
-    ball.style.right = rightValue + 'px'
-    if (leftValue >= finalWidth) {
-        ball.style.left = finalWidth + 'px'
+const moveUp = function(){
+    bottom = parseInt(ball.style.bottom)
+    top2 = parseInt(ball.style.top)
+    left = parseInt(ball.style.left)
+    if (left == 0 && top2 == 0) {
+        ball.style.left = '0px'
+        ball.style.bottom = '0px'
+        return
     }
+    if (bottom == finalHeight && top2 == 0) {
+        ball.style.bottom += 'px'
+        ball.style.top += 'px'
+        return
+    }
+    bottom += 15
+    top2 = (finalHeight - bottom)
+    ball.style.bottom = bottom + 'px'
+    ball.style.top = top2 + 'px'
 }
 
 const moveLeft = function(){
-    rightValue = parseInt(ball.style.right) || finalWidth
-    rightValue += 15
-    leftValue = finalWidth - rightValue
-    ball.style.right = rightValue + 'px'
-    ball.style.left = leftValue + 'px'
-    if (rightValue >= finalWidth) {
-        ball.style.right = finalWidth + 'px'
+    right = parseInt(ball.style.right)
+    left = parseInt(ball.style.left)
+    top2 = parseInt(ball.style.top)
+    if (left == 0 && top2 == 0) {
+        ball.style.left = '0px'
+        ball.style.bottom = '0px'
+        return
     }
+    if (left == 0) {
+        ball.style.right += 'px'
+        return
+    }
+    right += 15
+    left = finalWidth - right
+    ball.style.right = right + 'px'
+    ball.style.left = left + 'px'
 }
-
-const moveUp = function(){
-    downValue = parseInt(ball.style.bottom) || finalHeight
-    downValue += 15
-    upValue = (finalHeight - downValue)
-    ball.style.bottom = downValue + 'px'
-    ball.style.top = upValue + 'px'
-    if (downValue >= finalHeight) {
-        ball.style.bottom = finalHeight + 'px'
+    
+const moveRight = function(){
+    left = parseInt(ball.style.left)
+    right = parseInt(ball.style.right)
+    if (right == 0 && left == finalWidth) {
+        ball.style.right += 'px'
+        ball.style.left += 'px'
+        return
     }
-}   
+    left += 15
+    right = finalWidth - left
+    ball.style.left = left + 'px'
+    ball.style.right = right + 'px'
+}
 
 const moveDown = function(){
-    upValue = parseInt(ball.style.top)
-    upValue += 15
-    downValue = (finalHeight - upValue)
-    ball.style.top = upValue + 'px'
-    ball.style.bottom = downValue + 'px'
-    if (upValue >= finalHeight) {
-        ball.style.top = finalHeight + 'px'
+    top2 = parseInt(ball.style.top)
+    bottom = parseInt(ball.style.bottom)
+    if (top2 == finalHeight && bottom == 0) {
+        ball.style.bottom += 'px'
+        ball.style.top += 'px'
+        return
     }
+    top2 += 15
+    bottom = (finalHeight - top2)
+    ball.style.top = top2 + 'px'
+    ball.style.bottom = bottom + 'px'
 }
 
 
-
-right.onclick = function() {
+document.getElementById('right').onclick = function() {
     moveRight()
 }
 
-left.onclick = function() {
+document.getElementById('left').onclick = function() {
     moveLeft()
 }
 
-up.onclick = function() {
+document.getElementById('up').onclick = function() {
     moveUp()
 }
 
-down.onclick = function() {
+document.getElementById('down').onclick = function() {
     moveDown()
 }
 
@@ -117,6 +129,23 @@ function changeColor() {
     document.getElementById('playing-field').style.backgroundColor = '#8e44ad'
 }
 
+this.onkeydown = checkKey
+
+function checkKey(event) {
+    if (event.keyCode == '38') {
+        moveUp()
+    }
+    else if (event.keyCode == '40') {
+        moveDown()
+    }
+    else if (event.keyCode == '37') {
+       moveLeft()
+    }
+    else if (event.keyCode == '39') {
+       moveRight()
+    }
+
+}
 
 // const list = document.createElement('li')
 // list.innerHTML = 'What is love?'
