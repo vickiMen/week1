@@ -1,0 +1,80 @@
+#container {
+    height: 500px;
+    width: 500px;
+    background-color: #1ABC9B;
+    border: 5px solid #179F84;
+    border-radius: 5px;
+    position: absolute;
+    display: block;
+    margin: 5px;
+    padding: 10px;
+}
+
+.mainSection {
+    height: 30%;
+    width: inherit;
+    padding: 10px;
+    /* display:  block; */
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: -30px;
+    font-family: Avenir-medium;
+    font-size: 15px;
+    color: red;
+}
+
+#section2{
+    display: flex;
+}
+
+#section1{
+    margin-top: 20px;
+}
+
+.subSection {
+    padding: 10px;
+    height: 30%;
+    width: 210px;
+    display: inline-block;
+    text-align: center;
+    margin: 5px;
+}
+
+.input {
+    width: 70%;
+    margin-top: 1px;
+    padding: 10px;
+    border: solid 2px;
+    border-right-color: #eeeeee;
+    border-bottom-color: #eeeeee;
+    border-top-color: #A6A6A6;
+    border-left-color: #A6A6A6;
+}
+
+.label {
+    /* float: initial; */
+    display: block;
+    font-family: Avenir-medium;
+    font-size: 20px;
+    color: black;
+}
+
+.mainSection #section3 {
+    position: relative;
+    display: block;
+}
+
+.button {
+    margin-top: 20%;
+    margin-left: -7%;
+    font-size: 15px;
+    font-family: Avenir-medium;
+    position: absolute;
+    height: 35px;
+    width: 80px;
+    background-color: #179F84;
+    border: 1px #179F84 solid;
+    border-radius: 5px;
+    /* box-shadow: grey; */
+    box-shadow: 3px 3px 5px 1px rgb(73, 72, 72);
+}
