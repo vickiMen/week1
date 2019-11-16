@@ -1,4 +1,4 @@
-const form = {
+let form = {
     name: '',
     desiredsalary: '',
     birthday: '',
@@ -14,6 +14,8 @@ this.onchange = function(event) {
 
 
 function validate(){
+    form.desiredsalary = form.desiredsalary.replace(/,/, '')
+    form.phone = form.phone.replace(/-/, '')
     let errorsArr = []
     let formKeys = Object.keys(form)
     let missingProperties = []
@@ -39,11 +41,19 @@ function validate(){
     if ((form.desiredsalary < '10000' && form.desiredsalary != '') || form.desiredsalary > '16000') {
         errorsArr.push('<br>Salary must be greater than 10,000 but less than 16,000')
     }
-    if (form.phone.length < 10 && form.phone.length != '') {
+    if ((form.phone.length > 10) || (form.phone.length < 10 && form.phone.length != '')) {
         errorsArr.push('<br>Phone must be 10 digits long')
     }
     if (errorsArr.length > 0){
         printError(errorsArr)
+    }
+    else {
+        document.getElementById('container').style.display = 'none'
+        const success = document.createElement('span')
+        success.setAttribute('id', 'successMessage')
+        success.setAttribute('style', 'font-family: Avenir-medium; font-size: 20px; padding: 10px; margin-left: 5px;')
+        document.body.appendChild(success)
+        document.getElementById('successMessage').innerHTML = `Welcome, ${form.name}!`
     }
 }   
 
